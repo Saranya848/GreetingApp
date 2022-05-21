@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
@@ -47,5 +48,26 @@ public class GreetingRestController {
         return iGreetingService.addGreeting(user);
     }
 
-
+    /**
+     * Method to Get the Greeting message by ID in repository.
+     *
+     * @param id - We are passing the id a parameter.
+     * @return - It will return the user repo for the given Id.
+     *
+     * URL : http://localhost:8092/getGreetingByID?id=1
+     */
+    @GetMapping("/getGreetingByID")
+    public Greeting getGreetingByID(@RequestParam(name = "id") Integer id) {
+        return iGreetingService.getGreetingByID(id);
+    }
+    /**
+     *  Method to List all the greeting message in the repository
+     *
+     * @return- It will return the list of all the users in the repository
+     * URL : http://localhost:8092/getAllGreetings
+     */
+    @GetMapping("/getAllGreetings")
+    public List<Greeting> getAllGreetings() {
+        return iGreetingService.getAllGreetings();
+    }
 }
