@@ -11,15 +11,12 @@ import lombok.Setter;
 @Setter
 public class User {
 
-    private String firstName;
-    private String lastName;
-//    private String email;
-//
-//    public String getEmail() {
-//        return email;
-//    }
-//
-//    public void setEmail(String email) {
-//        this.email = email;
-//    }
+    private String firstName, lastName;
+
+    @Override
+    public String toString() {
+        String str = (firstName != null) ? firstName + " " : "";
+        str += (lastName != null) ? lastName : "";
+        return str.trim();
+    }
 }
